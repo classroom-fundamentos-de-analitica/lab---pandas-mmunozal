@@ -40,97 +40,81 @@ def pregunta_02():
 
 
 def pregunta_03():
-    """
-    ¿Cuál es la cantidad de registros por cada letra de la columna _c1 del archivo
-    `tbl0.tsv`?
+  a=tbl0.iloc[:, 1]
+  listaA=0
+  listaB=0
+  listaC=0
+  listaD=0
+  listaE=0
+  for i in a:
+    if i=='A':
+      listaA= listaA + 1
+    elif i=='B':
+      listaB= listaB + 1
+    elif i=='C':
+      listaC= listaC + 1
+    elif i=='D':
+      listaD= listaD + 1
+    else:
+      listaE= listaE + 1
 
-    Rta/
-    A     8
-    B     7
-    C     5
-    D     6
-    E    14
-    Name: _c1, dtype: int64
-
-    """
-    a=tbl0.iloc[:, 1]
-    listaA=0
-    listaB=0
-    listaC=0
-    listaD=0
-    listaE=0
-    for i in a:
-      if i=='A':
-        listaA= listaA + 1
-      elif i=='B':
-        listaB= listaB + 1
-      elif i=='C':
-        listaC= listaC + 1
-      elif i=='D':
-        listaD= listaD + 1
-      else:
-        listaE= listaE + 1
-    return print("A",listaA,"B",listaB,"C",listaC,"D",listaD,"E",listaE)
+  return print("A",listaA,"B",listaB,"C",listaC,"D",listaD,"E",listaE)
 
 
 def pregunta_04():
-    """
-    Calcule el promedio de _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
-
-    Rta/
-    A    4.625000
-    B    5.142857
-    C    5.400000
-    D    3.833333
-    E    4.785714
-    Name: _c2, dtype: float64
-    """
-      a=tbl0.iloc[:, 1]
-      b=tbl0.iloc[:, 2]
-      listaA=[]
-      listaB=[]
-      listaC=[]
-      listaD=[]
-      listaE=[]
-      for tupla in zip(a, b): #obtenemos la tupla en cada iteración
-        if tupla[0]=="A":
-          listaA.append(tupla[1])
-        elif tupla[0]=="B":
-          listaB.append(tupla[1])
-        elif tupla[0]=="C":
-          listaC.append(tupla[1])
-        elif tupla[0]=="D":
-          listaD.append(tupla[1])
-        else:
-          listaE.append(tupla[1])
-      dfA = pd.DataFrame(listaA)
-      dfA= float(dfA.mean())
-      dfB = pd.DataFrame(listaB)
-      dfB= float(dfB.mean())
-      dfC = pd.DataFrame(listaC)
-      dfC= float(dfC.mean())
-      dfD = pd.DataFrame(listaD)
-      dfD= float(dfD.mean())
-      dfE = pd.DataFrame(listaE)
-      dfE= float(dfE.mean())
-      return print("A",round(dfA,6),"B",round(dfB,6),"C",round(dfC,6),"D",round(dfD,6),"E",round(dfE,6))
+  a=tbl0.iloc[:, 1]
+  b=tbl0.iloc[:, 2]
+  listaA=[]
+  listaB=[]
+  listaC=[]
+  listaD=[]
+  listaE=[]
+  for tupla in zip(a, b): #obtenemos la tupla en cada iteración
+    if tupla[0]=="A":
+      listaA.append(tupla[1])
+    elif tupla[0]=="B":
+      listaB.append(tupla[1])
+    elif tupla[0]=="C":
+      listaC.append(tupla[1])
+    elif tupla[0]=="D":
+      listaD.append(tupla[1])
+    else:
+      listaE.append(tupla[1])
+  dfA = pd.DataFrame(listaA)
+  dfA= float(dfA.mean())
+  dfB = pd.DataFrame(listaB)
+  dfB= float(dfB.mean())
+  dfC = pd.DataFrame(listaC)
+  dfC= float(dfC.mean())
+  dfD = pd.DataFrame(listaD)
+  dfD= float(dfD.mean())
+  dfE = pd.DataFrame(listaE)
+  dfE= float(dfE.mean())
+  return print("A",round(dfA,6),"B",round(dfB,6),"C",round(dfC,6),"D",round(dfD,6),"E",round(dfE,6))
 
 
 def pregunta_05():
-    """
-    Calcule el valor máximo de _c2 por cada letra en la columna _c1 del archivo
-    `tbl0.tsv`.
+  a=tbl0.iloc[:, 1]
+  b=tbl0.iloc[:, 2]
+  listaA=[]
+  listaB=[]
+  listaC=[]
+  listaD=[]
+  listaE=[]
+  for tupla in zip(a, b): #obtenemos la tupla en cada iteración
+    if tupla[0]=="A":
+      listaA.append(tupla[1])
+    elif tupla[0]=="B":
+      listaB.append(tupla[1])
+    elif tupla[0]=="C":
+      listaC.append(tupla[1])
+    elif tupla[0]=="D":
+      listaD.append(tupla[1])
+    else:
+      listaE.append(tupla[1])
 
-    Rta/
-    _c1
-    A    9
-    B    9
-    C    9
-    D    7
-    E    9
-    Name: _c2, dtype: int64
-    """
-    return
+
+  return print("A",max(listaA),"B",max(listaB),"C",max(listaC),"D",max(listaD),"E",max(listaE))
 
 
 def pregunta_06():
