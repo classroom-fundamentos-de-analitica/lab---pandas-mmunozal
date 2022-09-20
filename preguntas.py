@@ -70,8 +70,7 @@ def pregunta_03():
         listaD= listaD + 1
       else:
         listaE= listaE + 1
-    ayuda= [("A",listaA),("B",listaB),("C",listaC),("D",listaD),("E",listaE)]
-    return ayuda
+    return print("A",listaA,"B",listaB,"C",listaC,"D",listaD,"E",listaE)
 
 
 def pregunta_04():
@@ -86,7 +85,35 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    return
+      a=tbl0.iloc[:, 1]
+      b=tbl0.iloc[:, 2]
+      listaA=[]
+      listaB=[]
+      listaC=[]
+      listaD=[]
+      listaE=[]
+      for tupla in zip(a, b): #obtenemos la tupla en cada iteración
+        if tupla[0]=="A":
+          listaA.append(tupla[1])
+        elif tupla[0]=="B":
+          listaB.append(tupla[1])
+        elif tupla[0]=="C":
+          listaC.append(tupla[1])
+        elif tupla[0]=="D":
+          listaD.append(tupla[1])
+        else:
+          listaE.append(tupla[1])
+      dfA = pd.DataFrame(listaA)
+      dfA= float(dfA.mean())
+      dfB = pd.DataFrame(listaB)
+      dfB= float(dfB.mean())
+      dfC = pd.DataFrame(listaC)
+      dfC= float(dfC.mean())
+      dfD = pd.DataFrame(listaD)
+      dfD= float(dfD.mean())
+      dfE = pd.DataFrame(listaE)
+      dfE= float(dfE.mean())
+      return print("A",round(dfA,6),"B",round(dfB,6),"C",round(dfC,6),"D",round(dfD,6),"E",round(dfE,6))
 
 
 def pregunta_05():
