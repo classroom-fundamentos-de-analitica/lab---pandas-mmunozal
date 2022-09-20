@@ -53,7 +53,25 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
+    a=tbl0.iloc[:, 1]
+    listaA=0
+    listaB=0
+    listaC=0
+    listaD=0
+    listaE=0
+    for i in a:
+      if i=='A':
+        listaA= listaA + 1
+      elif i=='B':
+        listaB= listaB + 1
+      elif i=='C':
+        listaC= listaC + 1
+      elif i=='D':
+        listaD= listaD + 1
+      else:
+        listaE= listaE + 1
+    ayuda= [("A",listaA),("B",listaB),("C",listaC),("D",listaD),("E",listaE)]
+    return ayuda
 
 
 def pregunta_04():
