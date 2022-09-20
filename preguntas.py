@@ -22,7 +22,9 @@ def pregunta_01():
     40
 
     """
-    return
+    
+    total_rows=len(tbl0.axes[0]) 
+    return total_rows
 
 
 def pregunta_02():
@@ -33,7 +35,8 @@ def pregunta_02():
     4
 
     """
-    return
+    total_cols=len(tbl0.axes[1])
+    return total_cols
 
 
 def pregunta_03():
