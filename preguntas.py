@@ -175,7 +175,16 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
+    a=tbl0.iloc[:, 0]
+    b=tbl0.iloc[:, 2]
+    suma=[]
+    for i in range(len(tbl0)):
+      ayuda=a[i]
+      ayuda1=b[i]
+      sumar=int(ayuda+ayuda1)
+      suma.append(sumar)
+    tbl0["suma"]=suma
+    return tbl0
 
 
 def pregunta_09():
