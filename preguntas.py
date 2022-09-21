@@ -58,7 +58,8 @@ def pregunta_03():
     else:
       listaE= listaE + 1
   ayuda={"A" : listaA,"B":listaB,"C":listaC,"D":listaD,"E":listaE}
-  return ayuda
+  ayuda1 = pd.Series(ayuda)
+  return ayuda1
 
 
 def pregunta_04():
@@ -91,7 +92,8 @@ def pregunta_04():
   dfE = pd.DataFrame(listaE)
   dfE= float(dfE.mean())
   ayuda={"A":round(dfA,6),"B":round(dfB,6),"C":round(dfC,6),"D":round(dfD,6),"E":round(dfE,6)}
-  return ayuda
+  ayuda1 = pd.Series(ayuda)
+  return ayuda1
 
 
 def pregunta_05():
@@ -114,7 +116,8 @@ def pregunta_05():
     else:
       listaE.append(tupla[1])
   ayuda={"A":max(listaA),"B":max(listaB),"C":max(listaC),"D":max(listaD),"E":max(listaE)}
-  return ayuda
+  ayuda1 = pd.Series(ayuda)
+  return ayuda1
 
 
 def pregunta_06():
