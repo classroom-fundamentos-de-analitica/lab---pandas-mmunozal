@@ -136,19 +136,28 @@ def pregunta_06():
 
 
 def pregunta_07():
-    """
-    Calcule la suma de la _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
-
-    Rta/
-    _c1
-    A    37
-    B    36
-    C    27
-    D    23
-    E    67
-    Name: _c2, dtype: int64
-    """
-    return
+  a=tbl0.iloc[:, 1]
+  b=tbl0.iloc[:, 2]
+  listaA=[]
+  listaB=[]
+  listaC=[]
+  listaD=[]
+  listaE=[]
+  for tupla in zip(a, b): #obtenemos la tupla en cada iteración
+    if tupla[0]=="A":
+      listaA.append(tupla[1])
+    elif tupla[0]=="B":
+      listaB.append(tupla[1])
+    elif tupla[0]=="C":
+      listaC.append(tupla[1])
+    elif tupla[0]=="D":
+      listaD.append(tupla[1])
+    else:
+      listaE.append(tupla[1])
+  ayuda= {"A":sum(listaA),"B":sum(listaB),"C":sum(listaC),"D":sum(listaD),"E":sum(listaE)}
+  ayuda1 = pd.Series(ayuda)
+  return ayuda1
+pregunta_07()
 
 
 def pregunta_08():
