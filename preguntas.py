@@ -57,8 +57,8 @@ def pregunta_03():
       listaD= listaD + 1
     else:
       listaE= listaE + 1
-
-  return print("A",listaA,"B",listaB,"C",listaC,"D",listaD,"E",listaE)
+  ayuda={"A" : listaA,"B":listaB,"C":listaC,"D":listaD,"E":listaE}
+  return ayuda
 
 
 def pregunta_04():
@@ -90,7 +90,8 @@ def pregunta_04():
   dfD= float(dfD.mean())
   dfE = pd.DataFrame(listaE)
   dfE= float(dfE.mean())
-  return print("A",round(dfA,6),"B",round(dfB,6),"C",round(dfC,6),"D",round(dfD,6),"E",round(dfE,6))
+  ayuda={"A":round(dfA,6),"B":round(dfB,6),"C":round(dfC,6),"D":round(dfD,6),"E":round(dfE,6)}
+  return ayuda
 
 
 def pregunta_05():
@@ -112,9 +113,8 @@ def pregunta_05():
       listaD.append(tupla[1])
     else:
       listaE.append(tupla[1])
-
-
-  return print("A",max(listaA),"B",max(listaB),"C",max(listaC),"D",max(listaD),"E",max(listaE))
+  ayuda={"A":max(listaA),"B":max(listaB),"C":max(listaC),"D":max(listaD),"E":max(listaE)}
+  return ayuda
 
 
 def pregunta_06():
@@ -126,7 +126,10 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    unicos=((tbl1['_c4'])).unique()
+    mayus=[x.upper() for x in unicos]
+    ordenar=sorted(mayus)
+    return ordenar
 
 
 def pregunta_07():
