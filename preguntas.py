@@ -63,37 +63,7 @@ def pregunta_03():
 
 
 def pregunta_04():
-  a=tbl0.iloc[:, 1]
-  b=tbl0.iloc[:, 2]
-  listaA=[]
-  listaB=[]
-  listaC=[]
-  listaD=[]
-  listaE=[]
-  for tupla in zip(a, b): #obtenemos la tupla en cada iteración
-    if tupla[0]=="A":
-      listaA.append(tupla[1])
-    elif tupla[0]=="B":
-      listaB.append(tupla[1])
-    elif tupla[0]=="C":
-      listaC.append(tupla[1])
-    elif tupla[0]=="D":
-      listaD.append(tupla[1])
-    else:
-      listaE.append(tupla[1])
-  dfA = pd.DataFrame(listaA)
-  dfA= float(dfA.mean())
-  dfB = pd.DataFrame(listaB)
-  dfB= float(dfB.mean())
-  dfC = pd.DataFrame(listaC)
-  dfC= float(dfC.mean())
-  dfD = pd.DataFrame(listaD)
-  dfD= float(dfD.mean())
-  dfE = pd.DataFrame(listaE)
-  dfE= float(dfE.mean())
-  ayuda={"A":round(dfA,6),"B":round(dfB,6),"C":round(dfC,6),"D":round(dfD,6),"E":round(dfE,6)}
-  ayuda1 = pd.Series(ayuda)
-  return ayuda1
+  return tbl0.groupby('_c1')['_c2'].mean()
 
 
 def pregunta_05():
