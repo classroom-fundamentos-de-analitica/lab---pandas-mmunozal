@@ -172,7 +172,8 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return
+    tbl0["year"] = tbl0['_c3'].map(lambda año: año[:4])
+    return tbl0
 
 
 def pregunta_10():
@@ -189,7 +190,11 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
+    tbl0['_c2'] = tbl0['_c2'].map(str)
+    tabla = tbl0.pivot_table(values="_c2",index="_c1",aggfunc=sorted)
+    tabla['_c2'] = tabla['_c2'].map(":".join)
+    tabla.index.names = ['_c0']
+    return tabla
 
 
 def pregunta_11():
@@ -208,7 +213,10 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    tabla = tbl1.pivot_table(values="_c4",index="_c0",aggfunc=sorted)
+    tabla['_c4'] = tabla['_c4'].map(",".join)
+    tabla = tabla.reset_index()
+    return tabla
 
 
 def pregunta_12():
@@ -226,7 +234,13 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
+    tbl2['_c5b'] = tbl2['_c5b'].map(str)
+    tbl2['_c5'] = tbl2['_c5a'] + ":" + tbl2['_c5b']
+    tabla = tbl2.pivot_table(values="_c5",index="_c0",aggfunc=sorted)
+    tabla['_c5'] = tabla['_c5'].map(",".join)
+    tabla = tabla.reset_index()
+    return tabla
+
 
 
 def pregunta_13():
@@ -243,4 +257,5 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return
+    nuevaTabla = pd.merge(tbl2,tbl0,on="_c0")
+    return nuevaTabla.groupby('_c1')['_c5b'].sum()
