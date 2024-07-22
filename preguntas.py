@@ -22,7 +22,9 @@ def pregunta_01():
     40
 
     """
-    return
+    
+    total_rows=len(tbl0.axes[0]) 
+    return total_rows
 
 
 def pregunta_02():
@@ -33,56 +35,59 @@ def pregunta_02():
     4
 
     """
-    return
+    total_cols=len(tbl0.axes[1])
+    return total_cols
 
 
 def pregunta_03():
-    """
-    ¿Cuál es la cantidad de registros por cada letra de la columna _c1 del archivo
-    `tbl0.tsv`?
-
-    Rta/
-    A     8
-    B     7
-    C     5
-    D     6
-    E    14
-    Name: _c1, dtype: int64
-
-    """
-    return
+  a=tbl0.iloc[:, 1]
+  listaA=0
+  listaB=0
+  listaC=0
+  listaD=0
+  listaE=0
+  for i in a:
+    if i=='A':
+      listaA= listaA + 1
+    elif i=='B':
+      listaB= listaB + 1
+    elif i=='C':
+      listaC= listaC + 1
+    elif i=='D':
+      listaD= listaD + 1
+    else:
+      listaE= listaE + 1
+  ayuda={"A" : listaA,"B":listaB,"C":listaC,"D":listaD,"E":listaE}
+  ayuda1 = pd.Series(ayuda)
+  return ayuda1
 
 
 def pregunta_04():
-    """
-    Calcule el promedio de _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
-
-    Rta/
-    A    4.625000
-    B    5.142857
-    C    5.400000
-    D    3.833333
-    E    4.785714
-    Name: _c2, dtype: float64
-    """
-    return
+  return tbl0.groupby('_c1')['_c2'].mean()
 
 
 def pregunta_05():
-    """
-    Calcule el valor máximo de _c2 por cada letra en la columna _c1 del archivo
-    `tbl0.tsv`.
-
-    Rta/
-    _c1
-    A    9
-    B    9
-    C    9
-    D    7
-    E    9
-    Name: _c2, dtype: int64
-    """
-    return
+  a=tbl0.iloc[:, 1]
+  b=tbl0.iloc[:, 2]
+  listaA=[]
+  listaB=[]
+  listaC=[]
+  listaD=[]
+  listaE=[]
+  for tupla in zip(a, b): #obtenemos la tupla en cada iteración
+    if tupla[0]=="A":
+      listaA.append(tupla[1])
+    elif tupla[0]=="B":
+      listaB.append(tupla[1])
+    elif tupla[0]=="C":
+      listaC.append(tupla[1])
+    elif tupla[0]=="D":
+      listaD.append(tupla[1])
+    else:
+      listaE.append(tupla[1])
+  ayuda={"A":max(listaA),"B":max(listaB),"C":max(listaC),"D":max(listaD),"E":max(listaE)}
+  ayuda1 = pd.Series(ayuda)
+  return ayuda1
 
 
 def pregunta_06():
@@ -94,23 +99,35 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    unicos=((tbl1['_c4'])).unique()
+    mayus=[x.upper() for x in unicos]
+    ordenar=sorted(mayus)
+    return ordenar
 
 
 def pregunta_07():
-    """
-    Calcule la suma de la _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
-
-    Rta/
-    _c1
-    A    37
-    B    36
-    C    27
-    D    23
-    E    67
-    Name: _c2, dtype: int64
-    """
-    return
+  a=tbl0.iloc[:, 1]
+  b=tbl0.iloc[:, 2]
+  listaA=[]
+  listaB=[]
+  listaC=[]
+  listaD=[]
+  listaE=[]
+  for tupla in zip(a, b): #obtenemos la tupla en cada iteración
+    if tupla[0]=="A":
+      listaA.append(tupla[1])
+    elif tupla[0]=="B":
+      listaB.append(tupla[1])
+    elif tupla[0]=="C":
+      listaC.append(tupla[1])
+    elif tupla[0]=="D":
+      listaD.append(tupla[1])
+    else:
+      listaE.append(tupla[1])
+  ayuda= {"A":sum(listaA),"B":sum(listaB),"C":sum(listaC),"D":sum(listaD),"E":sum(listaE)}
+  ayuda1 = pd.Series(ayuda)
+  return ayuda1
+pregunta_07()
 
 
 def pregunta_08():
@@ -128,7 +145,16 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
+    a=tbl0.iloc[:, 0]
+    b=tbl0.iloc[:, 2]
+    suma=[]
+    for i in range(len(tbl0)):
+      ayuda=a[i]
+      ayuda1=b[i]
+      sumar=int(ayuda+ayuda1)
+      suma.append(sumar)
+    tbl0["suma"]=suma
+    return tbl0
 
 
 def pregunta_09():
@@ -146,7 +172,8 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return
+    tbl0["year"] = tbl0['_c3'].map(lambda año: año[:4])
+    return tbl0
 
 
 def pregunta_10():
@@ -163,7 +190,11 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
+    tbl0['_c2'] = tbl0['_c2'].map(str)
+    tabla = tbl0.pivot_table(values="_c2",index="_c1",aggfunc=sorted)
+    tabla['_c2'] = tabla['_c2'].map(":".join)
+    tabla.index.names = ['_c0']
+    return tabla
 
 
 def pregunta_11():
@@ -182,7 +213,10 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    tabla = tbl1.pivot_table(values="_c4",index="_c0",aggfunc=sorted)
+    tabla['_c4'] = tabla['_c4'].map(",".join)
+    tabla = tabla.reset_index()
+    return tabla
 
 
 def pregunta_12():
@@ -200,7 +234,13 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
+    tbl2['_c5b'] = tbl2['_c5b'].map(str)
+    tbl2['_c5'] = tbl2['_c5a'] + ":" + tbl2['_c5b']
+    tabla = tbl2.pivot_table(values="_c5",index="_c0",aggfunc=sorted)
+    tabla['_c5'] = tabla['_c5'].map(",".join)
+    tabla = tabla.reset_index()
+    return tabla
+
 
 
 def pregunta_13():
@@ -217,4 +257,5 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return
+    nuevaTabla = pd.merge(tbl2,tbl0,on="_c0")
+    return nuevaTabla.groupby('_c1')['_c5b'].sum()
